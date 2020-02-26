@@ -1,0 +1,23 @@
+p,div,h1,h2,h3,h4,h5,h6 {
+  color: white !important;
+}
+
+ul {
+  list-style: none;
+  display: inline-block;
+
+}
+
+li {
+  text-align: center;
+}
+
+li:not(:last-child) {
+  border-bottom: 2px dashed white;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.align-right {
+  text-align: right;
+}

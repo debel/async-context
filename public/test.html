@@ -1,0 +1,61 @@
+<script>
+let currentContext = {};
+
+const AsyncContext = {
+  get(key) {
+    debugger;
+    return currentContext[key];
+  },
+  set(key, value) {
+    debugger;
+    currentContext[key] = value;
+  },
+};
+
+const timeoutWithContext = (action, timeout) => {
+  debugger;
+  const capturedContext = currentContext;
+  setTimeout(() => {
+    debugger;
+    currentContext = Object.create(capturedContext);
+    action();
+    currentContext = capturedContext;
+  }, timeout);
+};
+
+const asyncLog = () => {
+  const a = AsyncContext.get('a');
+  const b = AsyncContext.get('b');
+
+  console.log({a, b});
+}
+
+const asyncChain3 = () => {
+  AsyncContext.set('b', 1);
+
+  timeoutWithContext(asyncLog, 1000);
+};
+
+const asyncChain1 = () => {
+  debugger;
+  AsyncContext.set('a', 1);
+  
+  timeoutWithContext(asyncChain3, 1000);
+  timeoutWithContext(asyncLog, 1000);
+};
+
+const asyncChain2 = () => {
+  debugger;
+  AsyncContext.set('a', 2);
+  
+  timeoutWithContext(asyncChain3, 1000);
+  timeoutWithContext(asyncLog, 1000);
+};
+
+function main() {
+  timeoutWithContext(asyncChain1);
+  timeoutWithContext(asyncChain2);
+  timeoutWithContext(asyncLog);
+}
+
+</script>
