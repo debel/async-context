@@ -1,0 +1,24 @@
+<script src="https://unpkg.com/zone.js"></script>
+
+<script>
+
+function first() {
+  setTimeout(second, 1000);
+}
+
+function second() {
+  setTimeout(third, 1000);
+}
+
+function third() {
+  console.log(Zone.current.get('param'));
+}
+
+Zone.current
+  .fork({ name: 'zoneA', properties: { param : 42 }})
+  .run(first);
+
+Zone.current
+  .fork({ name: 'zoneB', properties: { param : 'wat?' }})
+  .run(first);
+</script>

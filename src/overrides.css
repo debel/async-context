@@ -21,3 +21,11 @@ li:not(:last-child) {
 .align-right {
   text-align: right;
 }
+
+.strikeThrough {
+  text-decoration: line-through;
+}
+
+.negative-points li {
+  list-style: '❌';
+}
