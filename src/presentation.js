@@ -64,21 +64,23 @@ export default () => {
         <Heading size="1">Async Context</Heading>
         <Text className="align-right">Mihail Mikov @debelbot</Text>
         <Text className="align-right"></Text>
-        <Text className="align-right">Beer.js Feb 2020</Text>
+        <Text className="align-right">Beer.js Aug 2020</Text>
+        <Image style={{ float:'right' }} width="10%" src="images/beerjs.png" />
+        <Image style={{ float:'right' }} width="10%" src="images/beerjs.png" />
+        <Image style={{ float:'right' }} width="10%" src="images/beerjs.png" />
       </Slide>
 
       <Slide id="about-me">
         <Heading>Hi, I'm Misho</Heading>
         <Image src="images/me.jpg" />
-        <Text>Senior full-stack engineer at Skyscanner</Text>
+        <Text>Senior full-stack engineer <span class="strikeThrough">at Skyscanner</span></Text>
         <Text>Rick and Morty fan, Board Game Geek, Juggler</Text>
       </Slide>
 
-      <Slide id="about-skyscanner">
-        <Image alt="skyscanner" src="images/skyscanner.png" />
-        <Text>Global travel engine with 100M users</Text>
-        <Text>500+ engineers in 10 offices</Text>
-        <Text>a strong dev culture</Text>
+      <Slide id="looking-for-work">
+        <Heading>Looking for work</Heading>
+        <Image alt="looking-for-work" src="images/looking-for-work.jpg" />
+        <Text>Interested in: distributed systems, full-stack + devOps</Text>
       </Slide>
 
       <Slide id="beer-js">
@@ -103,25 +105,49 @@ export default () => {
         <Image width="75%" src="images/threads-grandma.jpg" />
       </Slide>
 
+      <Slide id="regular-threads">
+        <Heading>"Normal" threads</Heading>
+        <Image src="images/normal-threads.png" />
+        <List>
+          <ListItem>Thread-local execution progress</ListItem>
+          <ListItem>Thread-local memory</ListItem>
+        </List>
+      </Slide>
+
+      <Slide id="thread-locals-1">
+        <Heading>Thread local variables</Heading>
+        <Code snippet={snippets.pythonThreadLocals} />
+        <hr/>
+        <Code snippet={snippets.javaThreadLocals} />
+      </Slide>
+
       <Slide id="threads-2">
         <Heading fit>JavaScript, Y U No Threads?!</Heading>
         <Image src="images/y-u-no-guy.png" />
       </Slide>
-
-      <Slide id="well-actually">
-        <Heading>Well, actually it has</Heading>
-        <Image width="40%" src="images/well-actually.png" />
-        <Text>but they're called "workers" ...and they work a bit differently</Text>
+      
+      <Slide id="the-event-loop-evil">
+        <Heading>JavaScript has <br/>the event "loop"</Heading>
+        <Image src="images/evil.png" />
       </Slide>
 
-      <Slide id="story-for-another-time">
-        <Heading>Cool story</Heading>
-        <Image src="images/another-time.jpg" />
-        <Text>...for another time</Text>
+      <Slide id="async-thread">
+        <Heading>Async "Thread"</Heading>
+        <Image src="images/async-stack.png" />
       </Slide>
 
-      <Slide id="whats-really-missing">
-        <Heading fit>So what's missing then?</Heading>
+      <Slide id="async-threads">
+        <Heading>Async "threads"</Heading>
+        <Image src="images/event-loop-requests.png" />
+      </Slide>
+
+      <Slide id="event-loop">
+        <Heading>The event loop</Heading>
+        <Image src="images/node-event-loop-phases.png" />
+      </Slide>
+
+      <Slide id="async-context">
+        <Heading>But, something is still missing...</Heading>
       </Slide>
 
       <Slide id="context-meme">
@@ -149,6 +175,11 @@ export default () => {
         <Image width="50%" src="images/magic.gif" />
       </Slide>
 
+      <Slide id="fools-us">
+        <Heading fit>How does "the magic" work?</Heading>
+        <Image src="images/penn-teller.jpg" />
+      </Slide>
+
       <Slide id="global-scope">
         <Heading>Global scope</Heading>
         <Code snippet={snippets.globalScope} />
@@ -174,40 +205,6 @@ export default () => {
           <ListItem>functions must be defined within the same closure in order to access scope</ListItem>
         </List>
       </Slide>
-      
-      <Slide id="async-stack">
-        <Heading>Async "Stack"</Heading>
-        <Image src="images/async-stack.png" />
-      </Slide>
-
-      <Slide id="async-threads">
-        <Heading>Async "threads"</Heading>
-        <Image src="images/event-loop-requests.png" />
-      </Slide>
-    
-      <Slide id="regular-threads">
-        <Heading>"Normal" threads</Heading>
-        <Image src="images/normal-threads.png" />
-        <List>
-          <ListItem>Thread-local execution progress</ListItem>
-          <ListItem>Thread-local memory</ListItem>
-        </List>
-      </Slide>
-
-      <Slide id="thread-locals-1">
-        <Heading>Thread local variables</Heading>
-        <Code snippet={snippets.pythonThreadLocals} />
-      </Slide>
-
-      <Slide id="thread-locals-2">
-        <Heading>Thread local variables</Heading>
-        <Code snippet={snippets.javaThreadLocals} />
-      </Slide>
-
-      <Slide id="event-loop">
-        <Heading>The event loop</Heading>
-        <Image src="images/node-event-loop-phases.png" />
-      </Slide>
 
       <Slide id="zones-1">
         <Heading>Zones</Heading>
@@ -216,12 +213,12 @@ export default () => {
 
       <Slide id="zones-code-1">
         <Heading>Zones</Heading>
-        <Code snippet={snippets.zones1} />
+        <Code snippet={snippets.zoneThread} />
       </Slide>
 
       <Slide id="zones-code-2">
         <Heading>Zones</Heading>
-        <Code snippet={snippets.zoneThread} />
+        <Code snippet={snippets.zones1} />
       </Slide>
 
       <Slide id="monkey-patching">
@@ -234,7 +231,7 @@ export default () => {
         <List>
           <ListItem>Timers</ListItem>
           <ListItem>Promises</ListItem>
-          <ListItem>Multiple async browser APIs:<br/>
+          <ListItem>Multiple async APIs:<br/>
           fetch, UserMedia, canvas, WebSocket, etc</ListItem>
         </List>
       </Slide>
@@ -249,7 +246,7 @@ export default () => {
 
       <Slide id="async-hooks-1">
         <Heading>Async hooks</Heading>
-        <Text>A low-level API for trcking the lifetime of asynchronous resources in Node.js</Text>
+        <Text>A low-level API for tracking the lifetime of asynchronous resources in Node.js</Text>
       </Slide>
       
       <Slide id="not-react-hooks">
@@ -259,11 +256,6 @@ export default () => {
       <Slide id="async=hooks-2">
         <Heading>Async hooks</Heading>
         <Code snippet={snippets.asyncHooks1} />
-      </Slide>
-
-      <Slide id="async=hooks-3">
-        <Heading>Async hooks</Heading>
-        <Code snippet={snippets.asyncHooks2} />
       </Slide>
 
       <Slide id="async-hooks-callbacks-illustrated">
@@ -285,7 +277,7 @@ export default () => {
       </Slide>
 
       <Slide id="not-a-solved-problem">
-        <Heading>❌ Negative Conclusion</Heading>
+        <Heading fit>❌ Negative Conclusion 😨</Heading>
         <Text>There seems to be NO nice and easy way to achive quick stable isomorphic async context in JavaScript</Text>
       </Slide>
 
@@ -301,3 +293,28 @@ export default () => {
     </Deck>
   );
 };
+
+const extraSlides = (
+  <>
+    <Slide id="well-actually">
+      <Heading>Well, actually it has</Heading>
+      <Image width="40%" src="images/well-actually.png" />
+      <Text>but they're called "workers" ...and they work a bit differently</Text>
+    </Slide>
+
+    <Slide id="story-for-another-time">
+      <Heading>Cool story</Heading>
+      <Image src="images/another-time.jpg" />
+      <Text>...for another time</Text>
+    </Slide>
+
+    <Slide id="whats-really-missing">
+      <Heading fit>So what's missing then?</Heading>
+    </Slide>
+
+    <Slide id="async=hooks-3">
+        <Heading>Async hooks</Heading>
+        <Code snippet={snippets.asyncHooks2} />
+      </Slide>
+
+  </>);

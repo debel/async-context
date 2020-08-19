@@ -29,11 +29,11 @@ export const clickTimeout =
 
 export const simpleParameters =
 ` function first(param) {
-    second(param);
+    setTimeout(() => second(param));
   }
 
   function second(param) {
-    third(param);
+    setTimeout(() => third(param));
   }
 
   function third(param) {
@@ -42,11 +42,11 @@ export const simpleParameters =
 
 export const magic =
 `  function first() {
-    second();
+    setTimeout(second);
   }
 
   function second() {
-    third();
+    setTimeout(third);
   }
 
   function third() {
@@ -66,8 +66,8 @@ export const globalScope =
 
 export const lexicalScope =
   `  function lexical(param) {
-      function first() { second(); }
-      function second() { third(); }
+      function first() { setTimeout(second); }
+      function second() { setTimeout(third); }
       function third() { console.log(param); }
 
       first();
@@ -118,7 +118,7 @@ export const monkeyPatching =
   }`;
 
 export const asyncHooks1 =
-`  const async_hooks= require('async_hooks');
+`  const async_hooks = require('async_hooks');
 
   const asyncHook = async_hooks.createHook({
     init, before, after, destroy, promiseResolve
